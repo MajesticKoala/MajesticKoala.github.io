@@ -1,7 +1,8 @@
 $(function(){
 	console.log('Page loaded');
 
-		$('.name, .horiLine').css({opacity:'1'});
+		$('.name').css({opacity:'1'});
+		$('.horiLine').css({opacity:'0.5'});
 
 
 });
