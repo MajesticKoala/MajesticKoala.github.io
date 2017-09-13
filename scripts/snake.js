@@ -10,13 +10,6 @@ function Snake() {
 		this.tail = [];
 	}
 
-	this.fadeOut = function() {
-			for (var i = 0; i < this.tail.length; i++) {
-				fill(50, 1);
-				rect(this.tail[i].x, this.tail[i].y, gridSize, gridSize);
-			}
-		}
-
 	this.dir = function(x, y){
 		this.xdir = x;
 		this.ydir = y;
@@ -39,8 +32,9 @@ function Snake() {
 	this.update = function() {
 		if(this.total === this.tail.length){
 			this.tail.shift();
-		}
-		this.tail[this.total-1] = createVector(this.x, this.y);
+			}
+			this.tail[this.total-1] = createVector(this.x, this.y);
+
 
 		this.x = this.x + this.xdir*gridSize;
 		this.y = this.y + this.ydir*gridSize;

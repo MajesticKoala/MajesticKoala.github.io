@@ -4,6 +4,7 @@ var food;
 var canvas;
 var started = false;
 var arrow = document.getElementById('arrowKeys');
+var remainingSegs = 0;
 
 function setup(){
 	canvas = createCanvas(windowWidth, windowHeight);
@@ -16,16 +17,22 @@ function setup(){
 
 function draw(){
 	background(238, 238, 238);
+
 	snake.update();
 	snake.show();
 
 	if (started) {
 		if (snake.eat(food.x, food.y)) {
 			food.changeLocation();
+			remainingSegs+=3;
+		} else if (remainingSegs > 0) {
+			snake.eat(snake.x, snake.y);
+			remainingSegs--;
 		}
-		fill(50);
+		fill(70);
 		rect(food.x, food.y, gridSize, gridSize);
 	}
+
 	if (snake.checkWallHit()){
 		snake.reset();
 		arrow.style.opacity = "1";
