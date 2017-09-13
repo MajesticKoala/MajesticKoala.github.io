@@ -4,7 +4,7 @@ var food;
 var canvas;
 var started = false;
 var arrow = document.getElementById('arrowKeys');
-var remainingSegs = 0;
+var remainingSegs = 15;
 
 function setup(){
 	canvas = createCanvas(windowWidth, windowHeight);
@@ -17,14 +17,13 @@ function setup(){
 
 function draw(){
 	background(238, 238, 238);
-
-	snake.update();
-	snake.show();
+	snake.newPos();
+	snake.drawSnake();
 
 	if (started) {
 		if (snake.eat(food.x, food.y)) {
 			food.changeLocation();
-			remainingSegs+=3;
+			remainingSegs+=5;
 		} else if (remainingSegs > 0) {
 			snake.eat(snake.x, snake.y);
 			remainingSegs--;
@@ -49,15 +48,14 @@ function keyPressed(){
 		food = new Food();
 		started = true;
 	}
-
-	if (keyCode === UP_ARROW) {
-		snake.dir(0, -1);
-	} else if (keyCode === DOWN_ARROW) {
-		snake.dir(0, 1);
-	}else if (keyCode === RIGHT_ARROW) {
-		snake.dir(1, 0);
-	}else if (keyCode === LEFT_ARROW) {
+	if (keyCode === 37 && snake.xdir != 1) {
 		snake.dir(-1, 0);
+	} else if (keyCode === 38 && snake.ydir != 1) {
+		snake.dir(0, -1);
+	} else if (keyCode === 39 && snake.xdir != -1) {
+		snake.dir(1, 0);
+	} else if (keyCode === 40 && snake.ydir != -1) {
+		snake.dir(0, 1);
 	}
 }
 

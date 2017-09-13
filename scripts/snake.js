@@ -6,8 +6,9 @@ function Snake() {
 		this.y = 480;
 		this.xdir = 0;
 		this.ydir = 0;
-		this.total = 1;
-		this.tail = [];
+		this.segmentNumber = 1;
+		this.snakeArray = [];
+		remainingSegs = 15;
 	}
 
 	this.dir = function(x, y){
@@ -16,8 +17,8 @@ function Snake() {
 	}
 
 	this.checkTailHit = function() {
-		for (var i = 0; i < this.tail.length; i++) {
-			if(this.x === this.tail[i].x && this.y === this.tail[i].y){
+		for (var i = 0; i < this.snakeArray.length; i++) {
+			if(this.x === this.snakeArray[i].x && this.y === this.snakeArray[i].y){
 				return true;
 			}
 		}
@@ -29,21 +30,21 @@ function Snake() {
 		}
 	}
 
-	this.update = function() {
-		if(this.total === this.tail.length){
-			this.tail.shift();
+	this.newPos = function() {
+		if(this.segmentNumber === this.snakeArray.length){
+			this.snakeArray.shift();
 			}
-			this.tail[this.total-1] = createVector(this.x, this.y);
+			this.snakeArray[this.segmentNumber-1] = createVector(this.x, this.y);
 
 
 		this.x = this.x + this.xdir*gridSize;
 		this.y = this.y + this.ydir*gridSize;
 	}
 
-	this.show = function() {
+	this.drawSnake = function() {
 		fill(50);
-		for (var i = 0; i < this.tail.length; i++) {
-			rect(this.tail[i].x, this.tail[i].y, gridSize, gridSize);
+		for (var i = 0; i < this.snakeArray.length; i++) {
+			rect(this.snakeArray[i].x, this.snakeArray[i].y, gridSize, gridSize);
 		}
 		noStroke();
 		fill(50);
@@ -52,7 +53,7 @@ function Snake() {
 
 	this.eat = function(posx, posy) {
 		if (this.x === posx && this.y === posy) {
-			this.total++;
+			this.segmentNumber++;
 			return true;
 		}
 	}
