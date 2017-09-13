@@ -3,7 +3,7 @@ function Snake() {
 	this.reset = function(){
 		started = false;
 		this.x = gridSize*floor((windowWidth/gridSize)/2);
-		this.y = 480;
+		this.y = floor(520/gridSize)*gridSize;
 		this.xdir = 0;
 		this.ydir = 0;
 		this.segmentNumber = 1;

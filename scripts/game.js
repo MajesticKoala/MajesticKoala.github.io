@@ -3,8 +3,10 @@ var gridSize = 15;
 var food;
 var canvas;
 var started = false;
-var arrow = document.getElementById('arrowKeys');
 var remainingSegs = 15;
+var arrow = document.getElementById('arrowKeys');
+var score = document.getElementById('score');
+
 
 function setup(){
 	canvas = createCanvas(windowWidth, windowHeight);
@@ -23,28 +25,33 @@ function draw(){
 	if (started) {
 		if (snake.eat(food.x, food.y)) {
 			food.changeLocation();
-			remainingSegs+=5;
+			remainingSegs+=10;
 		} else if (remainingSegs > 0) {
 			snake.eat(snake.x, snake.y);
 			remainingSegs--;
 		}
 		fill(70);
 		rect(food.x, food.y, gridSize, gridSize);
+		score.innerHTML = snake.snakeArray.length;
 	}
 
 	if (snake.checkWallHit()){
 		snake.reset();
 		arrow.style.opacity = "1";
+		score.style.opacity = '0';
 	}
 	if (snake.checkTailHit()){
 		snake.reset();
 		arrow.style.opacity = "1";
+		score.style.opacity = '0';
 	}
+
 }
 
 function keyPressed(){
 	if (!started) {
 		arrow.style.opacity = "0";
+		score.style.opacity = '1';
 		food = new Food();
 		started = true;
 	}
@@ -63,4 +70,5 @@ function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 	snake.reset();
 	arrow.style.opacity = "1";
+	score.style.opacity = '0';
 }

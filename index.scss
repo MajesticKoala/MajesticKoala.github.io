@@ -13,16 +13,59 @@ canvas {
    @include transition(opacity 2s);
    opacity: 0;
 }
+
 body {
-	margin: 0;
-   padding: 0;
 	background-color: $background-color;
 }
+
+.contactContainer {
+   margin-top: 50px;
+   width: 500px;
+   height: 150px;
+   overflow: hidden;
+   position: relative;
+   float: right;
+   //background-color: yellow;
+}
+.contact {
+   //background-color: red;
+   width: 100px;
+   margin-left: 350px;
+   padding-right: 50px;
+   height: 50px;
+   text-align: right;
+   font:{
+      size: 12px;
+      family: sans-serif;
+      weight: 500;
+   }
+   text-transform: uppercase;
+   letter-spacing: 3px;
+}
+.contactInfo {
+   //background-color: cyan;
+   line-height: 20px;
+   position: absolute;
+   right: -500px;
+   margin: 0;
+   padding-right: 50px;
+   height: 90px;
+   width: 450px;
+   text-align: right;
+   font:{
+      size: 10px;
+      family: sans-serif;
+      weight: 500;
+   }
+   text-transform: uppercase;
+   letter-spacing: 2px;
+}
 .container {
+   float: left;
    display: block;
 	width: 100%;
 	margin: 0;
-	margin-top: 300px;
+	margin-top: 100px;
 	text-align: center;
 	.name {
 		display: inline-block;
@@ -57,6 +100,19 @@ body {
    @include transition(opacity 1s);
    font:{
       size: 8px;
+      family: sans-serif;
+      weight: 100;
+   }
+   text-transform: uppercase;
+   letter-spacing: 4px;
+}
+#score {
+   opacity: 0;
+   text-align: center;
+   color: $subtext-color;
+   @include transition(opacity 2s);
+   font:{
+      size: 15px;
       family: sans-serif;
       weight: 100;
    }
