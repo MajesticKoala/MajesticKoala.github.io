@@ -1,0 +1,65 @@
+@mixin transition($time...){
+  transition: $time;
+  -webkit-transition: $time;
+  -moz-transition: $time;
+  -o-transition: $time;
+}
+
+
+$background-color: #eee;
+$text-color: #222;
+$subtext-color: rgb(80, 80, 80);
+canvas {
+   @include transition(opacity 2s);
+   opacity: 0;
+}
+body {
+	margin: 0;
+   padding: 0;
+	background-color: $background-color;
+}
+.container {
+   display: block;
+	width: 100%;
+	margin: 0;
+	margin-top: 300px;
+	text-align: center;
+	.name {
+		display: inline-block;
+		opacity: 0;
+		color: $text-color;
+		@include transition(1s);
+		font:{
+			size: 50px;
+			family: sans-serif;
+			weight: 500;
+		}
+		text-transform: uppercase;
+		letter-spacing: 10px;
+	}
+	.horiLine {
+		@include transition(2s);
+		opacity: 0;
+		display: inline-block;
+		width: 200px;
+		background-color: $text-color;
+		height: 1px;
+		margin: 0 20px 15px 20px;
+      @media screen and (max-width: 1000px) {
+         display: none;
+      }
+	}
+}
+#arrowKeys {
+   opacity: 0;
+   text-align: center;
+   color: $subtext-color;
+   @include transition(opacity 1s);
+   font:{
+      size: 8px;
+      family: sans-serif;
+      weight: 100;
+   }
+   text-transform: uppercase;
+   letter-spacing: 4px;
+}
