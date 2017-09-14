@@ -125,24 +125,24 @@ function update(){
 	//Move enemy
 	if (ball.y > enemy.y+(enemy.height *0.6) && enemy.y < canvas.height-enemy.height) {
 		if (ball.y > enemy.y+(enemy.height *0.7)) {
-			enemy.y += 6;
+			enemy.y += yscale/8;
 		} else {
-			enemy.y += 2;
+			enemy.y += yscale/20;
 		}
 
 	} else if (ball.y < enemy.y +(enemy.height *0.4) && enemy.y > 0) {
 		if (ball.y < enemy.y+(enemy.height *0.3)) {
-			enemy.y -= 6;
+			enemy.y -= yscale/8;
 		} else {
-			enemy.y -= 2;
+			enemy.y -= yscale/20;
 		}
 	}
 
 	//Move paddle
 	if (keystate[38] && paddle.y > 0) {
-		paddle.y -= 6;
+		paddle.y -= yscale/8;
 	} else if (keystate[40] && paddle.y < canvas.height-paddle.height) {
-		paddle.y += 6;
+		paddle.y += yscale/8;
 	}
 }
 
