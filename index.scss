@@ -122,7 +122,7 @@ body {
    opacity: 0;
    text-align: center;
    color: $subtext-color;
-   @include transition(opacity 1s);
+   @include transition(opacity 2s);
    font:{
       size: 8px;
       family: sans-serif;
@@ -135,7 +135,7 @@ body {
    opacity: 0;
    text-align: center;
    color: $subtext-color;
-   @include transition(opacity 2s);
+   @include transition(opacity 4s);
    font:{
       size: 15px;
       family: sans-serif;
