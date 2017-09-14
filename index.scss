@@ -1,3 +1,28 @@
+@font-face {
+   font-family: 'typographPro';
+   src: url('./fonts/typographPro/tp_Extra_Bold.ttf') format('truetype');
+   font-weight: 900;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'typographPro';
+   src: url('./fonts/typographPro/tp_Light.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'typographPro';
+   src: url('./fonts/typographPro/tp_Semi_Bold.ttf') format('truetype');
+   font-weight: 500;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'typographPro';
+   src: url('./fonts/typographPro/tp_Ultra_Light.ttf') format('truetype');
+   font-weight: 100;
+   font-style: normal;
+}
+
 @mixin transition($time...){
   transition: $time;
   -webkit-transition: $time;
@@ -74,8 +99,8 @@ body {
 		@include transition(1s);
 		font:{
 			size: 50px;
-			family: sans-serif;
-			weight: 500;
+			family: 'typographPro', sans-serif;
+			weight: 400;
 		}
 		text-transform: uppercase;
 		letter-spacing: 10px;
@@ -88,7 +113,7 @@ body {
 		background-color: $text-color;
 		height: 1px;
 		margin: 0 20px 15px 20px;
-      @media screen and (max-width: 1000px) {
+      @media screen and (max-width: 1100px) {
          display: none;
       }
 	}
@@ -118,4 +143,26 @@ body {
    }
    text-transform: uppercase;
    letter-spacing: 4px;
+}
+@media screen and (max-width: 700px) {
+   canvas { display: none;}
+   #arrowKeys { display: none;}
+   .contactContainer{
+      position: fixed;
+      float: left;
+      width: 100%;
+      bottom: 100px;;
+      .contact{
+         padding: 0;
+         text-align: center;
+         margin: 0 auto;
+      }
+      .contactInfo {
+         padding: 0;
+         position: relative;
+         text-align: center;
+         right: 0;
+         margin: 0 auto;
+      }
+   }
 }

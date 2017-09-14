@@ -14,7 +14,7 @@ function setup(){
 	canvas.style('z-index', '-1');
 	snake = new Snake();
 	snake.reset();
-	frameRate(30);
+	frameRate(20);
 }
 
 function draw(){
