@@ -30,7 +30,7 @@ function draw(){
 			console.log(randomSeg);
 			food.changeLocation();
 			remainingSegs+= randomSeg + 6;
-			if (randomSeg > 7) {
+			if (randomSeg >= 7) {
 				remainingSegs += 10;
 				foodColor = color(200, 0, 100);
 			} else {
