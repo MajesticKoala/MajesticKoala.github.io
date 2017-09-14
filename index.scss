@@ -147,17 +147,23 @@ body {
 @media screen and (max-width: 700px) {
    canvas { display: none;}
    #arrowKeys { display: none;}
+   .container {
+      .name {
+         font-size: 30px;
+      }
+   }
    .contactContainer{
       position: fixed;
       float: left;
       width: 100%;
-      bottom: 100px;;
+      bottom: 5%;
       .contact{
          padding: 0;
          text-align: center;
          margin: 0 auto;
       }
       .contactInfo {
+         width: 300px;
          padding: 0;
          position: relative;
          text-align: center;
