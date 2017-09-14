@@ -1,18 +1,18 @@
-var canvas, ctx;
+var canvas, ctx, yscale, xscale;
 var paddle, enemy;
 var ball;
 var keystate;
 
 paddle = {
 	width: 20,
-	height: 100,
+	height: 300,
 	x: 0,
 	y: 0,
 	score: 0
 }
 enemy = {
 	width: 20,
-	height: 100,
+	height: 300,
 	x: 0,
 	y: 0,
 	score: 0
@@ -27,12 +27,24 @@ ball = {
 }
 
 
+
+
 function main() {
 	canvas = document.createElement("canvas");
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
+	yscale = canvas.height/14;
+	xscale = canvas.width/14;
 	ctx = canvas.getContext('2d');
 	document.body.appendChild(canvas);
+
+	window.addEventListener('resize', function(){
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		yscale = canvas.height/14;
+		xscale = canvas.width/14;
+		init();
+	});
 
 	keystate = {};
 	document.addEventListener('keydown', function(evt) {
@@ -47,13 +59,17 @@ function main() {
 
 function init() {
 	paddle.y = (canvas.height-paddle.height)/2;
+	paddle.height = canvas.height/2;
+
 	enemy.y = (canvas.height-enemy.height)/2;
 	enemy.x = canvas.width - enemy.width;
+	enemy.height = canvas.height/2;
 
-	ball.xvel = -4;
-	ball.yvel = -2;
+	ball.xvel = -xscale/10;
+	ball.yvel = -yscale/20;
 	ball.x = canvas.width/2;
 	ball.y = canvas.height/2;
+
 }
 
 function loop() {
@@ -66,19 +82,29 @@ function update(){
 
 	//check Paddle Hits
 	if (ball.x <= paddle.width && ball.y >= paddle.y && ball.y <= paddle.y+paddle.height) {
-		if (ball.y > paddle.y+ (paddle.height/2) -20) {
-			ball.yvel+=1;
-		} else if (ball.y < paddle.y+ (paddle.height/2) +20) {
-			ball.yvel-=1;
+		if (ball.y > paddle.y+ (paddle.height/2.2)) {
+			ball.yvel+=2;
+		} else if (ball.y < paddle.y+ (paddle.height/1.8)) {
+			ball.yvel-=2;
 		}
 		ball.xvel*=-1;
+		if (paddle.height > yscale) {
+			paddle.height -= yscale;
+		} else {
+			paddle.height = yscale/2;
+		}
 	} else if (ball.x >= enemy.x-ball.size && ball.y >= enemy.y && ball.y <= enemy.y+enemy.height) {
-		if (ball.y > enemy.y+ (enemy.height/2) -20) {
-			ball.yvel+=1;
-		} else if (ball.y < enemy.y+ (enemy.height/2) +20) {
-			ball.yvel-=1;
+		if (ball.y > enemy.y+ (enemy.height/2.2)) {
+			ball.yvel+=2;
+		} else if (ball.y < enemy.y+ (enemy.height/1.8)) {
+			ball.yvel-=2;
 		}
 		ball.xvel*=-1;
+		if (enemy.height > yscale) {
+			enemy.height -= yscale;
+		} else {
+			enemy.height = yscale/2;
+		}
 	}
 	//check vert wall Hits
 	if (ball.x < 0 ) {
@@ -97,27 +123,36 @@ function update(){
 	ball.y += ball.yvel;
 
 	//Move enemy
-	if (ball.y > enemy.y+(enemy.height - 30) && enemy.y < canvas.height-enemy.height) {
-		enemy.y += 3;
-	} else if (ball.y < enemy.y + 30 && enemy.y > 0) {
-		enemy.y -= 3;
+	if (ball.y > enemy.y+(enemy.height *0.6) && enemy.y < canvas.height-enemy.height) {
+		if (ball.y > enemy.y+(enemy.height *0.7)) {
+			enemy.y += 6;
+		} else {
+			enemy.y += 2;
+		}
+
+	} else if (ball.y < enemy.y +(enemy.height *0.4) && enemy.y > 0) {
+		if (ball.y < enemy.y+(enemy.height *0.3)) {
+			enemy.y -= 6;
+		} else {
+			enemy.y -= 2;
+		}
 	}
 
 	//Move paddle
 	if (keystate[38] && paddle.y > 0) {
-		paddle.y -= 3;
+		paddle.y -= 6;
 	} else if (keystate[40] && paddle.y < canvas.height-paddle.height) {
-		paddle.y += 3;
+		paddle.y += 6;
 	}
 }
 
 function draw() {
-	ctx.fillStyle = "#ddd";
+	ctx.fillStyle = "#eee";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	//Draws score
 	ctx.font = "300px monospace";
-	ctx.fillStyle = "#eee";
+	ctx.fillStyle = "#fff";
 	ctx.fillText(paddle.score, canvas.width/2 - 250, canvas.height/2 + 100);
 	ctx.fillText(enemy.score, canvas.width/2 + 80, canvas.height/2 + 100);
 
