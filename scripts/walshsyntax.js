@@ -8,24 +8,34 @@ $(function(){
 		}
 	});
 
-		$('.contact, .contactInfo').mouseover(function() {
+		$('#contact, .contactInfo').mouseover(function() {
 			$('.contactInfo').stop().animate({
 				right: 0
 			}, 600);
 		}).mouseout(
 			function() {
 			if ($(window).width() > 700) {
-				$('.contactInfo').stop().animate({
-					right: '-500px'
-				}, 600);
+				if (!$('#contact').hasClass("clicked")) {
+					$('.contactInfo').stop().animate({
+						right: '-500px'
+					}, 600);
+				}
 			}
 		});
 
-		$('.contact').click(function() {
-			$('.contactInfo').stop().animate({
-				right: 0
-			}, 600);
+		$('#contact').click(function() {
+			if ($('#contact').hasClass("clicked")) {
+				$('#contact').removeClass("clicked");
+			} else {
+				$('.contactInfo').stop().animate({
+					right: 0
+				}, 600);
+				$('#contact').addClass("clicked");
+			}
 		});
+
+		$('#pongLink').click(function() {window.location.href = "pong.html"});
+		$('#gitLink').click(function() {window.location.href = "https://github.com/MajesticKoala"});
 
 
 	$('.name').css({opacity:'1'});

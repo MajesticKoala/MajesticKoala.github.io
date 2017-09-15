@@ -6,6 +6,7 @@ var started = false;
 var remainingSegs;
 var arrow = document.getElementById('arrowKeys');
 var score = document.getElementById('score');
+var frames = 0;
 
 
 function setup(){
@@ -13,7 +14,7 @@ function setup(){
 	remainingSegs = floor(Math.random()*10) + 10;
 	canvas = createCanvas(windowWidth, windowHeight);
 	canvas.position(0, 0);
-	canvas.style('z-index', '-1');
+	canvas.style('z-index', '-2');
 	snake = new Snake();
 	snake.reset();
 	frameRate(20);
@@ -43,19 +44,18 @@ function draw(){
 		fill(foodColor);
 		rect(food.x, food.y, gridSize, gridSize);
 		score.innerHTML = snake.snakeArray.length;
-	}
 
-	if (snake.checkWallHit()){
-		snake.reset();
-		arrow.style.opacity = "1";
-		score.style.opacity = '0';
+		if (snake.checkWallHit()){
+			snake.reset();
+			arrow.style.opacity = "1";
+			score.style.opacity = '0';
+		}
+		if (snake.checkTailHit()){
+			snake.reset();
+			arrow.style.opacity = "1";
+			score.style.opacity = '0';
+		}
 	}
-	if (snake.checkTailHit()){
-		snake.reset();
-		arrow.style.opacity = "1";
-		score.style.opacity = '0';
-	}
-
 }
 
 function keyPressed(){

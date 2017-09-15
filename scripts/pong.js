@@ -58,14 +58,15 @@ function main() {
 }
 
 function init() {
-	paddle.y = (canvas.height-paddle.height)/2;
 	paddle.height = canvas.height/2;
+	paddle.y = canvas.height/2-(paddle.height/2);
 
-	enemy.y = (canvas.height-enemy.height)/2;
-	enemy.x = canvas.width - enemy.width;
 	enemy.height = canvas.height/2;
+	enemy.y = canvas.height/2-(enemy.height/2);
+	enemy.x = canvas.width - enemy.width;
 
-	ball.xvel = -xscale/10;
+
+	ball.xvel = xscale/8;
 	ball.yvel = -yscale/20;
 	ball.x = canvas.width/2;
 	ball.y = canvas.height/2;
@@ -125,14 +126,14 @@ function update(){
 	//Move enemy
 	if (ball.y > enemy.y+(enemy.height *0.6) && enemy.y < canvas.height-enemy.height) {
 		if (ball.y > enemy.y+(enemy.height *0.7)) {
-			enemy.y += yscale/8;
+			enemy.y += yscale/7;
 		} else {
 			enemy.y += yscale/20;
 		}
 
 	} else if (ball.y < enemy.y +(enemy.height *0.4) && enemy.y > 0) {
 		if (ball.y < enemy.y+(enemy.height *0.3)) {
-			enemy.y -= yscale/8;
+			enemy.y -= yscale/7;
 		} else {
 			enemy.y -= yscale/20;
 		}

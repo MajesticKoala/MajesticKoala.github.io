@@ -43,54 +43,68 @@ body {
 	background-color: $background-color;
 }
 
-.contactContainer {
-   margin-top: 50px;
+.menuContainer {
+   //position: absolute;
+   //z-index: -1;
    width: 500px;
-   height: 150px;
    overflow: hidden;
    position: relative;
    float: right;
+   line-height: 30px;
    //background-color: yellow;
-}
-.contact {
-   //background-color: red;
-   width: 100px;
-   margin-left: 350px;
-   padding-right: 50px;
-   height: 50px;
-   text-align: right;
-   font:{
-      size: 12px;
-      family: sans-serif;
-      weight: 500;
+   .menuItems {
+      @include transition(0.1s);
+      //background-color: red;
+      width: 100px;
+      margin-left: 350px;
+      padding-right: 50px;
+      height: 30px;
+      text-align: right;
+      color: $subtext-color;
+      font:{
+         size: 9px;
+         family: 'typographPro', sans-serif;
+         weight: normal;
+      }
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      &:hover {
+         color: #999;
+         cursor: pointer;
+      }
+      &#gitLink {
+         margin-top: 100px;
+      }
    }
-   text-transform: uppercase;
-   letter-spacing: 3px;
-}
-.contactInfo {
-   //background-color: cyan;
-   line-height: 20px;
-   position: absolute;
-   right: -500px;
-   margin: 0;
-   padding-right: 50px;
-   height: 90px;
-   width: 450px;
-   text-align: right;
-   font:{
-      size: 10px;
-      family: sans-serif;
-      weight: 500;
+   .contactInfo {
+      //background-color: cyan;
+      line-height: 20px;
+      position: absolute;
+      right: -500px;
+      margin: 0;
+      padding-right: 50px;
+      height: 70px;
+      width: 450px;
+      text-align: right;
+      font:{
+         size: 10px;
+         family: sans-serif;
+         weight: 500;
+      }
+      text-transform: uppercase;
+      letter-spacing: 2px;
    }
-   text-transform: uppercase;
-   letter-spacing: 2px;
 }
+
 .container {
+   //position: relative;
+   z-index: 10;
    float: left;
    display: block;
 	width: 100%;
-	margin: 0;
-	margin-top: 100px;
+   top: 0;
+   bottom: 0;
+	//margin: 0, auto;
 	text-align: center;
 	.name {
 		display: inline-block;
@@ -100,7 +114,7 @@ body {
 		font:{
 			size: 50px;
 			family: 'typographPro', sans-serif;
-			weight: 400;
+			weight: normal;
 		}
 		text-transform: uppercase;
 		letter-spacing: 10px;
@@ -122,7 +136,8 @@ body {
    opacity: 0;
    text-align: center;
    color: $subtext-color;
-   @include transition(opacity 2s);
+   @include transition(2s);
+   padding-top: 10px;
    font:{
       size: 8px;
       family: sans-serif;
@@ -149,21 +164,29 @@ body {
    #arrowKeys { display: none;}
    .container {
       .name {
+         margin-top: 50px;
+         margin-bottom: 50px;
          font-size: 30px;
       }
    }
-   .contactContainer{
+   .menuContainer{
       position: fixed;
       float: left;
       width: 100%;
       bottom: 5%;
-      .contact{
+      .menuItems{
          padding: 0;
          text-align: center;
          margin: 0 auto;
+         &#gitLink {
+            margin-top: 0;
+         }
+         &#pongLink{
+            display: none;
+         }
       }
       .contactInfo {
-         width: 300px;
+         width: 100%;
          padding: 0;
          position: relative;
          text-align: center;
