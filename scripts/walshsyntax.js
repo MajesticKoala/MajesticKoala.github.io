@@ -35,7 +35,7 @@ $(function(){
 		});
 
 		$('#pongLink').click(function() {window.location.href = "pong.html"});
-		$('#gitLink').click(function() {window.location.href = "https://github.com/MajesticKoala"});
+		$('#gitLink').click(function() {window.location.href = "pong.html"});
 
 
 	$('.name').css({opacity:'1'});
