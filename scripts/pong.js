@@ -4,14 +4,14 @@ var ball;
 var keystate;
 
 paddle = {
-	width: 20,
+	width: 10,
 	height: 300,
 	x: 0,
 	y: 0,
 	score: 0
 }
 enemy = {
-	width: 20,
+	width: 10,
 	height: 300,
 	x: 0,
 	y: 0,
@@ -47,11 +47,13 @@ function main() {
 	});
 
 	keystate = {};
-	document.addEventListener('keydown', function(evt) {
-		keystate[evt.keyCode] = true;
+	document.addEventListener('keydown', function(e) {
+		e.preventDefault();
+		keystate[e.keyCode] = true;
 	});
-	document.addEventListener('keyup', function(evt) {
-		delete keystate[evt.keyCode];
+	document.addEventListener('keyup', function(e) {
+		e.preventDefault();
+		delete keystate[e.keyCode];
 	});
 	init();
 	loop();
@@ -89,7 +91,7 @@ function update(){
 			ball.yvel-=2;
 		}
 		ball.xvel*=-1;
-		if (paddle.height > yscale) {
+		if (paddle.height > 1.5*yscale) {
 			paddle.height -= yscale;
 		} else {
 			paddle.height = yscale/2;
@@ -101,7 +103,7 @@ function update(){
 			ball.yvel-=2;
 		}
 		ball.xvel*=-1;
-		if (enemy.height > yscale) {
+		if (enemy.height > 1.5*yscale) {
 			enemy.height -= yscale;
 		} else {
 			enemy.height = yscale/2;
@@ -148,12 +150,12 @@ function update(){
 }
 
 function draw() {
-	ctx.fillStyle = "#eee";
+	ctx.fillStyle = "#fff";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	//Draws score
 	ctx.font = "300px monospace";
-	ctx.fillStyle = "#fff";
+	ctx.fillStyle = "#eee";
 	ctx.fillText(paddle.score, canvas.width/2 - 250, canvas.height/2 + 100);
 	ctx.fillText(enemy.score, canvas.width/2 + 80, canvas.height/2 + 100);
 

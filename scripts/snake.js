@@ -2,7 +2,7 @@ function Snake() {
 
 	this.reset = function(){
 		started = false;
-		this.x = gridSize*floor((windowWidth/gridSize)/2);
+		this.x = gridSize*floor((width/gridSize)/2);
 		this.y = gridSize*30;
 		this.xdir = 0;
 		this.ydir = 0;

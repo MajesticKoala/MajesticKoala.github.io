@@ -1,6 +1,15 @@
 $(function(){
 
+	$('.pageTop').height($(window).height());
+
+	$(document).on('scroll', function() {
+		$('.pageTop').css({'transform': 'translate3d(0px, ' + (($(window).scrollTop() * 50 / 100)) + 'px, 0px)'});
+	});
+
+	$('.mainContent').css({'margin-top': $(window).height()});
+
 	$(window).resize(function() {
+		$('.mainContent').css({'margin-top': $(window).height()});
 		if ($(window).width() < 700) {
 			$('.contactInfo').css({right: '0'});
 		} else {
@@ -44,4 +53,5 @@ $(function(){
 		$('#arrowKeys').css({opacity:'1'});
 		$('canvas').css({opacity:'1'});
 	}, 700);
+
 });
