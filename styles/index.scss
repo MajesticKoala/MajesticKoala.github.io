@@ -36,6 +36,7 @@ $text-color: #222;
 $subtext-color: rgb(80, 80, 80);
 
 canvas {
+   display: block;
   margin: 0;
   padding: 0;
    @include transition(opacity 2s);
@@ -168,7 +169,7 @@ body {
 }
 
 .mainContent {
-  
+
    //box-shadow: 0px 0px 30px 0px #ccc;
    @include transition(opacity 4s);
    margin: 0;

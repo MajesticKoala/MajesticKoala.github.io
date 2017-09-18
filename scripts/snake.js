@@ -6,7 +6,7 @@ function Snake() {
 		this.y = gridSize*30;
 		this.xdir = 0;
 		this.ydir = 0;
-		this.segmentNumber = 1;
+		this.segmentNumber = 0;
 		this.snakeArray = [];
 		remainingSegs = floor(Math.random()*10) + 10;
 		foodColor = color(70, 70, 70);
