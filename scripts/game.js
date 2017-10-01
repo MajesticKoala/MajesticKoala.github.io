@@ -30,14 +30,13 @@ function draw(){
 	if (started) {
 		if (snake.eat(food.x, food.y)) {
 			let randomSeg = floor(Math.random()*10);
-			//console.log(randomSeg);
 			food.changeLocation();
 			remainingSegs+= randomSeg + 6;
-			if (randomSeg >= 7) {
+			if (randomSeg >= 3) {
 				remainingSegs += 10;
-				foodColor = color(200, 0, 100);
-			} else {
 				foodColor = 70;
+			} else {
+				foodColor = color(200, 0, 100);
 			}
 		} else if (remainingSegs > 0) {
 			snake.eat(snake.x, snake.y);
