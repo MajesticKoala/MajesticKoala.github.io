@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+}
+.mainCont {
+  box-shadow: 0 0 10px 0px rgb(0, 0, 0);
+  overflow-y: scroll;
+  margin: 10px;
+  padding-left: 10px;
+  height: 300px;
+  width: 600px;
+  //margin: 0 auto;
+  background-color: #000;
+  text-align: left;
+  line-height: 40px;
+  color: #fff;
+  font:{
+     size: 12px;
+     family: monospace;
+     weight: 500;
+  }
+}
+#cursor{
+  background-color: #fff;
+}

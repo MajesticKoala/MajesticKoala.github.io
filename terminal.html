@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Terminal</title>
+    <link rel="stylesheet" type="text/css" href="./styles/terminal.min.css"/>
+		<link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico"/>
+		<script src="./scripts/jquery-3.2.1.js"></script>
+  </head>
+  <body>
+    <div class="mainCont">
+      terminalEmu:$ Terminal Emulator coming soon!<br />
+      terminalEmu:$ Press 'y' to return...<span id="cursor">i</span>
+    </div>
+  </body>
+  <script type="text/javascript">
+
+    $(function(){
+      onkeydown = function(e) {
+        if (e.which === 89 ) {
+          window.location.href = "index.html";
+      }
+  }
+
+    var blinkCursor = function(){
+      setTimeout(function() {
+        let cursor = $('#cursor');
+        cursor[0].style.display = cursor[0].style.display === 'inline' ? 'none' : 'inline';
+        blinkCursor();
+      }, 500);
+    };
+    blinkCursor();
+    });
+  </script>
+</html>
