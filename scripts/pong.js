@@ -110,7 +110,7 @@ function update(){
 		}
 	}
 	//check vert wall Hits
-	if (ball.x < 0 ) {
+	if (ball.x < -10 ) {
 		enemy.score++;
 		init();
 	} else if (ball.x > canvas.width) {
