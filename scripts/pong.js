@@ -30,6 +30,7 @@ ball = {
 
 
 function main() {
+	//create initial variables
 	canvas = document.createElement("canvas");
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
@@ -59,6 +60,7 @@ function main() {
 	loop();
 }
 
+//initialise game function
 function init() {
 	paddle.height = canvas.height/2;
 	paddle.y = canvas.height/2-(paddle.height/2);
