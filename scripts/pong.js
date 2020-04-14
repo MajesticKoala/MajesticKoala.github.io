@@ -156,7 +156,6 @@ function update(){
 			enemy.y -= yscale/20;
 		}
 	}
-
 	//Move paddle at a rate proportional to size of screen
 	if (keystate[38] && paddle.y > 0) {
 		paddle.y -= yscale/8;
