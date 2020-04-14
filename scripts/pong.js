@@ -19,7 +19,6 @@ enemy = {
 	y: 0,
 	score: 0
 }
-
 ball = {
 	size: 10,
 	xpos: 50,
@@ -181,8 +180,6 @@ function draw() {
 	//Draws player and enemy paddles
 	ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
 	ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
-
-
 }
 
 main();
